@@ -3,6 +3,11 @@
 - [Express](https://github.com/strongloop/loopback-benchmarks#express)
 - [LoopBack](https://github.com/strongloop/loopback-benchmarks#loopback)
 
+```
+make install
+make benchmark-express|benchmark-loopback
+```
+
 #Express
 ```
 Listening on http://0.0.0.0:3000
