@@ -10,6 +10,7 @@ make benchmark-express|benchmark-loopback
 ```
 
 ##Help
+```
 Usage: make [target]
 Targets:
   be, benchmark-express Performs 100 concurrent requests 10000 times on the Express project.
@@ -18,6 +19,7 @@ Targets:
   h, help     Displays the help menu.
   i, install    Runs `npm install` for the `express` and `loopback` projects.
   l, loopback   Runs `npm install` for the `loopback` project.
+```
 
 #Express
 ```
