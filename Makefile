@@ -39,7 +39,7 @@ l loopback:
 bl benchmark-loopback:
 	@slc run loopback & echo $$! > benchmark.pid
 	@sleep 2
-	ab -r -n 10000 -c 100 http://localhost:3000/api/messages/greet
+	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
 
@@ -50,6 +50,6 @@ bl benchmark-loopback:
 be benchmark-express:
 	@node express & echo $$! > benchmark.pid
 	@sleep 2
-	ab -r -n 10000 -c 100 http://localhost:3000/api/messages/greet
+	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
