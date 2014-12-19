@@ -3,10 +3,21 @@
 - [Express](https://github.com/strongloop/loopback-benchmarks#express)
 - [LoopBack](https://github.com/strongloop/loopback-benchmarks#loopback)
 
+##Getting started
 ```
 make install
 make benchmark-express|benchmark-loopback
 ```
+
+##Help
+Usage: make [target]
+Targets:
+  be, benchmark-express Performs 100 concurrent requests 10000 times on the Express project.
+  bl, benchmark-loopback  Performs 100 concurrent requests 10000 times on the LoopBack project.
+  e, express    Runs `npm install` for the `express` project.
+  h, help     Displays the help menu.
+  i, install    Runs `npm install` for the `express` and `loopback` projects.
+  l, loopback   Runs `npm install` for the `loopback` project.
 
 #Express
 ```
