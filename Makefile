@@ -1,10 +1,10 @@
 .PHONY: i install
 i install: express loopback
 
-.PHONY: express
-express:
+.PHONY: e express
+e express:
 	cd $(CURDIR)/express && npm i
 
-.PHONY: loopback
-loopback:
+.PHONY: l loopback
+l loopback:
 	cd $(CURDIR)/loopback && npm i
