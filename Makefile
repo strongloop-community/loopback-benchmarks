@@ -46,7 +46,7 @@ lo loopback-optimized:
 .PHONY: bl benchmark-loopback
 bl benchmark-loopback:
 	@slc run loopback & echo $$! > benchmark.pid
-	@sleep 2
+	@sleep 5
 	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
@@ -57,7 +57,7 @@ bl benchmark-loopback:
 .PHONY: bl benchmark-express
 be benchmark-express:
 	@node express & echo $$! > benchmark.pid
-	@sleep 2
+	@sleep 5
 	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
@@ -68,7 +68,7 @@ be benchmark-express:
 .PHONY: blo benchmark-loopback-optimized
 blo benchmark-loopback-optmized:
 	@slc run loopback-optimized & echo $$! > benchmark.pid
-	@sleep 2
+	@sleep 5
 	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
