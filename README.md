@@ -13,8 +13,8 @@ make benchmark-express|benchmark-loopback
 ```
 Usage: make [target]
 Targets:
-  be, benchmark-express Performs 100 concurrent requests 10000 times on the Express project.
-  bl, benchmark-loopback  Performs 100 concurrent requests 10000 times on the LoopBack project.
+  be, benchmark-express Performs 10 concurrent requests 10000 times on the Express project.
+  bl, benchmark-loopback  Performs 10 concurrent requests 10000 times on the LoopBack project.
   e, express    Runs `npm install` for the `express` project.
   h, help     Displays the help menu.
   i, install    Runs `npm install` for the `express` and `loopback` projects.
