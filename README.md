@@ -62,7 +62,7 @@ Percentage of the requests served within a certain time (ms)
  100%    232 (longest request)
 ```
 
-#Express
+#LoopBack
 ```
 INFO strong-agent API key not found, StrongOps dashboard reporting disabled.
 Generate configuration with:
