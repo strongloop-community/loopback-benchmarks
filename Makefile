@@ -7,6 +7,7 @@ h help:
 	@echo 'Targets:'
 	@echo '	be, benchmark-express	Performs 10 concurrent requests 10000 times on the Express project.'
 	@echo '	bl, benchmark-loopback	Performs 10 concurrent requests 10000 times on the LoopBack project.'
+	@echo '	blo, benchmark-loopback-optimized	Performs 10 concurrent requests 10000 times on the LoopBack optimized project.'
 	@echo '	e, express		Runs `npm install` for the `express` project.'
 	@echo '	h, help			Displays the help menu.'
 	@echo '	i, install		Runs `npm install` for the `express` and `loopback` projects.'
@@ -31,6 +32,13 @@ e express:
 .PHONY: l loopback
 l loopback:
 	@cd $(CURDIR)/loopback && npm i
+
+#
+# Runs `npm install` for the `loopback` project.
+#
+.PHONY: lo loopback-optimized
+lo loopback-optimized:
+	@cd $(CURDIR)/loopback-optimized && npm i
 
 #
 # Performs 100 concurrent requests 10000 times on the LoopBack project.
