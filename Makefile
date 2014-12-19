@@ -5,12 +5,12 @@
 h help:
 	@echo 'Usage: make [target]'
 	@echo 'Targets:'
-	@echo '	be, benchmark-express	Performs 100 concurrent requests 10000 times on the Express project..'
+	@echo '	be, benchmark-express	Performs 100 concurrent requests 10000 times on the Express project.'
 	@echo '	bl, benchmark-loopback	Performs 100 concurrent requests 10000 times on the LoopBack project.'
-	@echo '	e, express	Runs `npm install` for the `express` project.'
-	@echo '	h, help		Displays the help menu.'
-	@echo '	i, install	Runs `npm install` for the `express` and `loopback` projects.'
-	@echo '	l, loopback	Runs `npm install` for the `loopback` project.'
+	@echo '	e, express		Runs `npm install` for the `express` project.'
+	@echo '	h, help			Displays the help menu.'
+	@echo '	i, install		Runs `npm install` for the `express` and `loopback` projects.'
+	@echo '	l, loopback		Runs `npm install` for the `loopback` project.'
 
 #
 # Runs `npm install` for the `express` and `loopback` projects.
