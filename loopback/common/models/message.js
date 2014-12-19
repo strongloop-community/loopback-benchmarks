@@ -1,13 +1,13 @@
 module.exports = function(Message) {
   Message.greet = function(cb) {
-    console.log('hello world');
-    cb();
+    cb(null, 'hello world');
   };
 
   Message.remoteMethod(
     'greet',
     {
-      http: {path: '/greet', verb: 'get'}
+      http: {verb: 'get'},
+      returns: {arg: 'greet', type: 'string'}
     }
   );
 };
