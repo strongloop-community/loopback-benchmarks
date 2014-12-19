@@ -53,3 +53,14 @@ be benchmark-express:
 	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
 	@cat benchmark.pid | xargs kill
 	@rm benchmark.pid
+
+#
+# Performs 100 concurrent requests 10000 times on the LoopBack project.
+#
+.PHONY: blo benchmark-loopback-optimized
+blo benchmark-loopback-optmized:
+	@slc run loopback-optimized & echo $$! > benchmark.pid
+	@sleep 2
+	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
+	@cat benchmark.pid | xargs kill
+	@rm benchmark.pid
