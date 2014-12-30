@@ -1,74 +1,47 @@
-#
-# Displays the help menu.
-#
-.PHONY: h help
-h help:
-	@echo 'Usage: make [target]'
-	@echo 'Targets:'
-	@echo '	be, benchmark-express	Performs 10 concurrent requests 10000 times on the Express project.'
-	@echo '	bl, benchmark-loopback	Performs 10 concurrent requests 10000 times on the LoopBack project.'
-	@echo '	blo, benchmark-loopback-optimized	Performs 10 concurrent requests 10000 times on the LoopBack optimized project.'
-	@echo '	e, express		Runs `npm install` for the `express` project.'
-	@echo '	h, help			Displays the help menu.'
-	@echo '	i, install		Runs `npm install` for the `express` and `loopback` projects.'
-	@echo '	l, loopback		Runs `npm install` for the `loopback` project.'
+ifndef REQ
+	REQ=1000
+endif
+ifndef CON
+	CON=1
+endif
 
-#
-# Runs `npm install` for the `express` and `loopback` projects.
-#
-.PHONY: i install
-i install: express loopback
+.PHONY: default
+default: install benchmark
 
-#
-# Runs `npm install` for the `express` project.
-#
-.PHONY: e express
-e express:
-	@cd $(CURDIR)/express && npm i
+# install targets
 
-#
-# Runs `npm install` for the `loopback` project.
-#
-.PHONY: l loopback
-l loopback:
-	@cd $(CURDIR)/loopback && npm i
+.PHONY: install
+install: express loopback loopback-optimized
 
-#
-# Runs `npm install` for the `loopback` project.
-#
-.PHONY: lo loopback-optimized
-lo loopback-optimized:
-	@cd $(CURDIR)/loopback-optimized && npm i
+.PHONY: express
+express:
+	@cd $(CURDIR)/express && npm i --silent
 
-#
-# Performs 100 concurrent requests 10000 times on the LoopBack project.
-#
-.PHONY: bl benchmark-loopback
-bl benchmark-loopback:
-	@slc run loopback & echo $$! > benchmark.pid
-	@sleep 5
-	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
-	@cat benchmark.pid | xargs kill
-	@rm benchmark.pid
+.PHONY: loopback
+loopback:
+	@cd $(CURDIR)/loopback && npm i --silent
 
-#
-# Performs 100 concurrent requests 10000 times on the Express project.
-#
-.PHONY: bl benchmark-express
-be benchmark-express:
+.PHONY: loopback-optimized
+loopback-optimized:
+	@cd $(CURDIR)/loopback-optimized && npm i --silent
+
+# benchmark targets
+
+.PHONY: benchmark
+benchmark:
 	@node express & echo $$! > benchmark.pid
-	@sleep 5
-	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
+	@sleep 2
+	@echo '#express' > results.log
+	@ab -r -n $(REQ) -c $(CON) http://127.0.0.1:3000/api/messages/greet|grep "Requests per second:" >> results.log
 	@cat benchmark.pid | xargs kill
-	@rm benchmark.pid
-
-#
-# Performs 100 concurrent requests 10000 times on the LoopBack project.
-#
-.PHONY: blo benchmark-loopback-optimized
-blo benchmark-loopback-optmized:
-	@slc run loopback-optimized & echo $$! > benchmark.pid
-	@sleep 5
-	ab -r -n 10000 -c 10 http://localhost:3000/api/messages/greet
+	@node loopback & echo $$! > benchmark.pid
+	@sleep 2
+	@echo '\n#loopback' >> results.log
+	@ab -r -n $(REQ) -c $(CON) http://127.0.0.1:3000/api/messages/greet|grep "Requests per second:" >> results.log
 	@cat benchmark.pid | xargs kill
-	@rm benchmark.pid
+	@node loopback-optimized & echo $$! > benchmark.pid
+	@sleep 2
+	@echo '\n#loopback' >> results.log
+	@ab -r -n $(REQ) -c $(CON) http://127.0.0.1:3000/api/messages/greet|grep "Requests per second:" >> results.log
+	@cat benchmark.pid | xargs kill
+	@cat results.log

@@ -1,0 +1,8 @@
+#express
+Requests per second:    3010.87 [#/sec] (mean)
+
+#loopback
+Requests per second:    1181.24 [#/sec] (mean)
+
+#loopback
+Requests per second:    1700.03 [#/sec] (mean)
