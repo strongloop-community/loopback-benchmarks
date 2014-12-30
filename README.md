@@ -8,11 +8,13 @@ REQ = Number of requests to perform (equivalent to -n in `ab`)
 CON = Number of concurrent requests to perform (equivalent to -c in `ab`)
 
 #results
-##express
-Requests per second:    3010.87 [#/sec] (mean)
+```
+#express
+Requests per second:    3053.28 [#/sec] (mean)
 
-##loopback
-Requests per second:    1181.24 [#/sec] (mean)
+#loopback
+Requests per second:    1192.66 [#/sec] (mean)
 
-##loopback
-Requests per second:    1700.03 [#/sec] (mean)
+#loopback-optimized
+Requests per second:    1811.74 [#/sec] (mean)
+```
