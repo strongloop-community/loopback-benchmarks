@@ -41,7 +41,7 @@ benchmark:
 	@cat benchmark.pid | xargs kill
 	@node loopback-optimized & echo $$! > benchmark.pid
 	@sleep 2
-	@echo '\n#loopback' >> results.log
+	@echo '\n#loopback-optimized' >> results.log
 	@ab -r -n $(REQ) -c $(CON) http://127.0.0.1:3000/api/messages/greet|grep "Requests per second:" >> results.log
 	@cat benchmark.pid | xargs kill
 	@cat results.log
