@@ -1,7 +1,7 @@
 #loopback-benchmarks
 
 ```shell
-make [REQ=1000 CON=1]
+make [REQ=1000] [CON=1]
 ```
 
 REQ = Number of requests to perform (equivalent to -n in `ab`)
