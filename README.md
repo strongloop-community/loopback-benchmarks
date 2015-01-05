@@ -4,8 +4,8 @@
 make [REQ=1000] [CON=1]
 ```
 
-REQ = Number of requests to perform (equivalent to -n in `ab`)
-CON = Number of concurrent requests to perform (equivalent to -c in `ab`)
+- REQ = Number of requests to perform (equivalent to -n in `ab`)
+- CON = Number of concurrent requests to perform (equivalent to -c in `ab`)
 
 #results
 ```
